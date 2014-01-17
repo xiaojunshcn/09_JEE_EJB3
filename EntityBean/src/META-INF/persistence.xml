@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+
+	<!-- default value for transaction-type is: JTA -->
+	<persistence-unit name="joePersistenceUnit" transaction-type="JTA">
+		<!-- joexiaoDS is the jndi name of the datasource in mysql-ds.xml. 
+			when data source is deployed to jboss, it is set to java: namespace.
+		-->
+		<jta-data-source>java:joexiaoDS</jta-data-source>
+		
+		<properties>
+			<property name="hibernate.hbm2dll.auto" value="update"/>
+			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.format_sql" value="true"/>
+		</properties>
+	</persistence-unit>
+</persistence>

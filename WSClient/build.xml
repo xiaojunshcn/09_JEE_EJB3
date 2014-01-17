@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="WSClient" default="wsclientgen" basedir=".">
+	<property name="src.dir" value="${basedir}/src" />
+	<path id="build.classpath" description="set class path">
+		<fileset dir="${basedir}/lib">
+				<include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<target name="wsclientgen" description="generate client classes for web service. refresh project when it is done.">
+		<taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport" classpathref="build.classpath"/>
+		<wsimport wsdl="http://127.0.0.1:8080/WebService/OrderServiceBean?wsdl"
+			sourcedestdir="${src.dir}" package="com.joe.ws.client" keep="true" 
+			verbose="true" destdir="${basedir}/bin" xendorsed="true"/>
+	</target>
+</project>
